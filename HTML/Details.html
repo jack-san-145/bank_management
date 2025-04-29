@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Your Details</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(to right, #ece9e6, #ffffff);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .details-card {
+            background-color: #fff;
+            padding: 30px 40px;
+            border-radius: 15px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+            max-width: 400px;
+            width: 100%;
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 25px;
+            color: #333;
+        }
+
+        .detail {
+            margin-bottom: 15px;
+        }
+
+        .label {
+            font-weight: bold;
+            color: #555;
+        }
+
+        .value {
+            display: block;
+            margin-top: 5px;
+            color: #333;
+            font-size: 15px;
+        }
+
+        .done-button {
+            display: block;
+            text-align: center;
+            width: 100%;
+            padding: 12px;
+            background-color:orange;
+            border: none;
+            border-radius: 8px;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+            margin-top: 20px;
+            text-decoration: none; /* removes underline */
+            transition: background 0.3s ease;
+        }
+
+        .done-button:hover {
+            color: orange;
+            background-color: black;
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="details-card" >
+        <h2>Your Details</h2>
+
+        <div class="detail">
+            <span class="label">Account Number:</span>
+            <span class="value">{{.AccountNumber}}</span>
+        </div>
+
+        <div class="detail">
+            <span class="label">Name:</span>
+            <span class="value">{{.Name}}</span>
+        </div>
+
+        <div class="detail">
+            <span class="label">Password:</span>
+            <span class="value">••••••••</span>
+        </div>
+
+        <div class="detail">
+            <span class="label">Mobile Number:</span>
+            <span class="value">{{.MobileNumber}}</span>
+        </div>
+
+        <div class="detail">
+            <span class="label">Address:</span>
+            <span class="value">{{.Address}}</span>
+        </div>
+        <a href="/bank/main" class="done-button">Done</a>
+
+    </div>
+
+</body>
+</html>

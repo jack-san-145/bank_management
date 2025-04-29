@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PrimeBank Online</title>
+    <style>
+        /* Internal CSS */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f7fa;
+            color: #333;
+        }
+        
+        .navbar {
+            background: linear-gradient(135deg, #6e48aa 0%, #9d50bb 100%);
+            padding: 20px 50px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+        
+        .logo {
+            color: white;
+            font-size: 28px;
+            font-weight: bold;
+            letter-spacing: 1px;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 30px;
+        }
+        
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 16px;
+            transition: all 0.3s ease;
+        }
+        
+        .nav-links a:hover {
+            color: #ffd700;
+            transform: translateY(-2px);
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+        
+        .welcome-section {
+            background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+            border-radius: 15px;
+            padding: 40px;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+            margin-bottom: 40px;
+        }
+        
+        .welcome-section h1 {
+            color: #6e48aa;
+            font-size: 36px;
+            margin-bottom: 20px;
+        }
+        
+        .welcome-section p {
+            color: #666;
+            font-size: 18px;
+            line-height: 1.6;
+        }
+        
+        .dashboard {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+        }
+        
+        .card {
+            background: white;
+            border-radius: 12px;
+            padding: 25px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+        }
+        
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+        
+        .card h2 {
+            color: #6e48aa;
+            font-size: 22px;
+            margin-bottom: 15px;
+            border-bottom: 2px solid #f0f0f0;
+            padding-bottom: 10px;
+        }
+        
+        .balance {
+            font-size: 28px;
+            font-weight: bold;
+            color: #2ecc71;
+            margin: 15px 0;
+        }
+        
+        .btn {
+            display: inline-block;
+            background: linear-gradient(135deg, #6e48aa 0%, #9d50bb 100%);
+            color: white;
+            padding: 12px 25px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 500;
+            margin-top: 15px;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+        }
+        
+        .btn:hover {
+            background: linear-gradient(135deg, #9d50bb 0%, #6e48aa 100%);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(157, 80, 187, 0.3);
+        }
+        
+        .transaction-list {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .transaction-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 12px 0;
+            border-bottom: 1px solid #f0f0f0;
+        }
+        
+        .transaction-amount.positive {
+            color: #2ecc71;
+            font-weight: bold;
+        }
+        
+        .transaction-amount.negative {
+            color: #e74c3c;
+            font-weight: bold;
+        }
+        
+        .quick-actions {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+            flex-wrap: wrap;
+        }
+        
+        .quick-action-btn {
+            background: #f0f0f0;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .quick-action-btn:hover {
+            background: #6e48aa;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="logo">PrimeBank®</div>
+        <div class="nav-links">
+            <a href="#">HOME</a>
+            <a href="#">ABOUT</a>
+            <a href="#">SERVICES</a>
+            <a href="#">SUPPORT</a>
+            <a href="#">CONTACT</a>
+        </div>
+    </nav>
+    
+    <div class="container">
+        <section class="welcome-section">
+            <h1>Welcome Back, Alexander!</h1>
+            <p>Manage your finances easily and securely with PrimeBank Online. Check your balance, view transactions, transfer money, and more.</p>
+        </section>
+        
+        <div class="dashboard">
+            <div class="card">
+                <h2>Account Summary</h2>
+                <p>Primary Checking Account</p>
+                <div class="balance">$12,458.75</div>
+                <p>Account Number: ******7890</p>
+                <a href="#" class="btn">View Details</a>
+            </div>
+            
+            <div class="card">
+                <h2>Recent Transactions</h2>
+                <ul class="transaction-list">
+                    <li class="transaction-item">
+                        <span>Amazon Purchase</span>
+                        <span class="transaction-amount negative">-$45.99</span>
+                    </li>
+                    <li class="transaction-item">
+                        <span>Salary Deposit</span>
+                        <span class="transaction-amount positive">+$3,500.00</span>
+                    </li>
+                    <li class="transaction-item">
+                        <span>Utility Bill</span>
+                        <span class="transaction-amount negative">-$120.75</span>
+                    </li>
+                    <li class="transaction-item">
+                        <span>Transfer to Savings</span>
+                        <span class="transaction-amount negative">-$500.00</span>
+                    </li>
+                </ul>
+                <a href="#" class="btn">View All Transactions</a>
+            </div>
+            
+            <div class="card">
+                <h2>Quick Actions</h2>
+                <div class="quick-actions">
+                    <button class="quick-action-btn">Transfer Money</button>
+                    <button class="quick-action-btn">Pay Bills</button>
+                    <button class="quick-action-btn">Deposit Check</button>
+                    <button class="quick-action-btn">Card Settings</button>
+                    <button class="quick-action-btn">Statements</button>
+                    <button class="quick-action-btn">Support</button>
+                </div>
+                <h2 style="margin-top: 25px;">Account Status</h2>
+                <p>✔️ Account is active and in good standing</p>
+                <p>✔️ No pending issues</p>
+                <p>✔️ Last login: Today, 10:45 AM</p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

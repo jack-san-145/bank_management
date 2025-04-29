@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>PraBank - Home</title>
+  <style>
+   * {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', sans-serif;
+  background: linear-gradient(135deg, #0f0f0f, #1c1c1c);
+  color: #f5f5f5;
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+}
+
+header {
+  background-color: rgba(20, 20, 20, 0.85);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 60px;
+  position: sticky;
+  top: 0;
+  z-index: 999;
+  backdrop-filter: blur(12px);
+  box-shadow: 0 10px 40px rgba(255, 165, 0, 0.15);
+}
+
+header h1 {
+  color: #ff8c00;
+  font-size: 36px;
+  letter-spacing: 1px;
+}
+
+nav a {
+  color: #e0e0e0;
+  text-decoration: none;
+  margin-left: 35px;
+  font-size: 16px;
+  font-weight: 500;
+  position: relative;
+  transition: color 0.3s ease;
+}
+
+nav a::after {
+  content: '';
+  position: absolute;
+  width: 0%;
+  height: 2px;
+  bottom: -4px;
+  left: 0;
+  background-color: #ff8c00;
+  transition: width 0.4s ease;
+}
+
+nav a:hover {
+  color: #ffffff;
+}
+
+nav a:hover::after {
+  width: 100%;
+}
+
+.hero {
+  height: 100vh;
+  background: linear-gradient(
+      rgba(0, 0, 0, 0.6),
+      rgba(0, 0, 0, 0.7)
+    ),
+    url('https://images.unsplash.com/photo-1504384308090-c894fdcc538d') no-repeat center center/cover;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 40px;
+  text-align: center;
+}
+
+.hero-text {
+  background-color: rgba(0, 0, 0, 0.5);
+  padding: 60px;
+  border-radius: 25px;
+  box-shadow: 0 10px 50px rgba(255, 140, 0, 0.2);
+  backdrop-filter: blur(16px);
+}
+
+.hero h2 {
+  font-size: 48px;
+  color: #ff8c00;
+  margin-bottom: 20px;
+}
+
+.hero p {
+  font-size: 20px;
+  color: #dddddd;
+}
+
+.section {
+  padding: 100px 60px;
+  text-align: center;
+}
+
+.section h2 {
+  color: #ff8c00;
+  font-size: 36px;
+  margin-bottom: 60px;
+  letter-spacing: 1px;
+}
+
+.cards {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 40px;
+}
+
+.card {
+  background: rgba(255, 255, 255, 0.05);
+  width: 320px;
+  padding: 35px 25px;
+  border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(20px);
+  transition: all 0.4s ease;
+  box-shadow: 0 15px 60px rgba(255, 140, 0, 0.1);
+  text-align: left;
+}
+
+.card:hover {
+  transform: translateY(-14px) scale(1.03);
+  box-shadow: 0 18px 80px rgba(255, 140, 0, 0.4);
+}
+
+.card h3 {
+  color: #ff8c00;
+  margin-bottom: 20px;
+  font-size: 22px;
+}
+
+.card p {
+  color: #cfcfcf;
+  font-size: 15px;
+  line-height: 1.6;
+}
+
+.btn {
+  margin-top: 20px;
+  display: inline-block;
+  background-color: #ff8c00;
+  color: white;
+  padding: 10px 25px;
+  border-radius: 25px;
+  text-decoration: none;
+  font-weight: bold;
+  box-shadow: 0 4px 20px rgba(255, 140, 0, 0.3);
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.btn:hover {
+  background-color: #e67300;
+  transform: scale(1.05);
+}
+
+footer {
+  background-color: #101010;
+  color: #aaa;
+  text-align: center;
+  padding: 50px 20px;
+  font-size: 15px;
+  border-top: 1px solid #222;
+  letter-spacing: 0.5px;
+}
+
+@media (max-width: 768px) {
+  .cards {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  header {
+    padding: 20px;
+  }
+
+  nav a {
+    margin-left: 15px;
+  }
+
+  .hero h2 {
+    font-size: 34px;
+  }
+
+  .hero p {
+    font-size: 16px;
+  }
+}
+
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>PraBank</h1>
+    <nav>
+      <a href="#">Home</a>
+      <a href="#">About</a>
+      <a href="#">Accounts</a>
+      <a href="#">Transactions</a>
+      <a href="#">Contact</a>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <div class="hero-text">
+      <h2>Experience Premium Banking</h2>
+      <p>Your finance, elevated with security and elegance.</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <h2>Our Premium Features</h2>
+    <div class="cards">
+      <div class="card">
+        <h3>💼 Account Overview</h3>
+        <p>See your account summary and recent activity at a glance, 24/7.</p>
+        <a href="#" class="btn">Explore</a>
+      </div>
+      <div class="card">
+        <h3>💸 Transactions</h3>
+        <p>Check, filter, and export all your banking transactions instantly.</p>
+        <a href="#" class="btn">Track</a>
+      </div>
+      <div class="card">
+        <h3>📊 Balance Details</h3>
+        <p>Real-time balance with detailed breakdowns and analytics.</p>
+        <a href="#" class="btn">View</a>
+      </div>
+      <div class="card">
+        <h3>📝 Mini Statements</h3>
+        <p>Generate and download printable mini-statements anytime.</p>
+        <a href="#" class="btn">Download</a>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    &copy; 2025 PraBank. Luxurious digital banking, redefined.
+  </footer>
+
+</body>
+</html>

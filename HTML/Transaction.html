@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Transactions - Bankaroo</title>
+  <!-- <link rel="stylesheet" href="styles.css" /> -->
+</head>
+<style>
+  /* === Global Reset & Base === */
+body {
+    margin: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #0d0d0d;
+    color: white;
+  }
+  
+  a {
+    text-decoration: none;
+    color: inherit;
+  }
+  
+  button {
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.3s ease;
+  }
+  
+  /* === Navbar === */
+  .navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 40px;
+    background-color: #000;
+    border-bottom: 1px solid #222;
+  }
+  
+  .navbar h1 {
+    color: #ff6a00;
+    margin: 0;
+    font-size: 1.8rem;
+  }
+  
+  .nav-links {
+    display: flex;
+    gap: 25px;
+  }
+  
+  .nav-links a {
+    color: white;
+    font-weight: 500;
+    transition: color 0.3s ease;
+  }
+  
+  .nav-links a:hover {
+    color: #ff6a00;
+  }
+  
+  /* === Features Section === */
+  .features-section {
+    text-align: center;
+    padding: 60px 20px;
+    max-width: 1000px;
+    margin: auto;
+  }
+  
+  .features-section h2 {
+    font-size: 2rem;
+    color: #ff6a00;
+    margin-bottom: 20px;
+  }
+  
+  .features-section p {
+    font-size: 1rem;
+    color: #ccc;
+    margin-bottom: 40px;
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+  /* === Card Styling (reuse for home page if needed) === */
+  .cards-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 30px;
+  }
+  
+  .card {
+    background: #1a1a1a;
+    border-radius: 15px;
+    padding: 30px 25px;
+    width: 280px;
+    box-shadow: 0 0 10px #ff6a0030;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  .card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 0 20px #ff6a00aa;
+  }
+  
+  .card h3 {
+    color: #ff6a00;
+    font-size: 1.2rem;
+    margin: 0 0 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+  }
+  
+  .card p {
+    font-size: 0.95rem;
+    color: #ddd;
+    margin-bottom: 20px;
+  }
+  
+  .card button {
+    padding: 10px 22px;
+    background-color: #ff6a00;
+    border: none;
+    border-radius: 20px;
+    color: white;
+    font-weight: bold;
+  }
+  
+  .card button:hover {
+    background-color: #e55a00;
+    transform: scale(1.05);
+  }
+  
+  /* === Responsive Tweak === */
+  @media (max-width: 600px) {
+    .navbar {
+      flex-direction: column;
+      gap: 15px;
+      align-items: flex-start;
+    }
+  
+    .nav-links {
+      flex-wrap: wrap;
+      gap: 15px;
+    }
+  
+    .features-section {
+      padding: 40px 15px;
+    }
+  
+    .cards-container {
+      flex-direction: column;
+      align-items: center;
+    }
+  }
+  
+
+  /* for account holder */
+  .details-card {
+    background-color: #1a1a1a;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 0 10px #ff6a0030;
+    max-width: 500px;
+    margin: 40px auto;
+    transition: all 0.3s ease;
+  }
+  
+  .details-card:hover {
+    box-shadow: 0 0 25px #ff6a00aa;
+    transform: translateY(-5px);
+  }
+  
+  .details-card h2 {
+    color: #ff6a00;
+    text-align: center;
+    margin-bottom: 25px;
+  }
+  
+  .detail {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 15px;
+    border-bottom: 1px solid #333;
+    padding-bottom: 8px;
+  }
+  
+  .label {
+    color: #ccc;
+    font-weight: 500;
+  }
+  
+  .value {
+    color: #eee;
+  }
+  
+  .done-button {
+    display: inline-block;
+    margin-top: 25px;
+    padding: 10px 25px;
+    background-color: #ff6a00;
+    color: white;
+    border: none;
+    border-radius: 20px;
+    font-weight: bold;
+    text-align: center;
+    transition: background 0.3s ease, transform 0.3s ease;
+  }
+  
+  .done-button:hover {
+    background-color: #e55a00;
+    transform: scale(1.05);
+  }
+  
+  .transfer-card {
+  background-color: #1a1a1a;
+  width: 500px; /* Increased width */
+  margin: 40px auto;
+  padding: 30px;
+  border-radius: 15px;
+  box-shadow: 0 0 15px #ff6a0030;
+  transition: all 0.3s ease;
+}
+
+.transfer-card:hover {
+  box-shadow: 0 0 25px #ff6a00aa;
+  transform: translateY(-5px);
+}
+
+.transfer-card h2 {
+  color: #ff6a00;
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.input-group {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 20px;
+}
+
+.input-group label {
+  margin-bottom: 8px;
+  color: #ccc;
+  font-weight: 500;
+}
+
+.input-group input {
+  padding: 8px;
+  border-radius: 10px;
+  border: none;
+  background-color: #2a2a2a;
+  color: white;
+  font-size: 1rem;
+}
+
+.pay-button {
+  width: 30%;
+  padding: 12px;
+  background-color: #ff6a00;
+  border: none;
+  border-radius: 25px;
+  color: white;
+  font-weight: bold;
+  font-size: 1rem;
+  transition: background 0.3s ease, transform 0.3s ease;
+}
+
+.pay-button:hover {
+  background-color: #e55a00;
+  transform: scale(1.05);
+  box-shadow: 0 0 25px #ff6a00aa;
+ color: black;
+}
+.hidden { visibility: hidden; }
+.visible { visibility: visible; }
+
+
+
+
+  
+</style>
+<body>
+  <div class="navbar">
+    <h1>Bankaroo</h1>
+    <div class="nav-links">
+      <a href="/bank/serveIndex">Home</a>
+        <a href="/bank/serveTransaction">Transactions</a>
+        <a href="/bank/AccountHolder">Account</a>
+        <a href="/bank/serveBalancePage">Balance</a>
+        <a href="#">About us</a>
+    </div>
+  </div>
+
+  <section class="features-section">
+    <h2>💰 Transactions</h2>
+    <p> Initiate a Seamless Transfer to Another Esteemed Account Holder </p>
+    <!-- Add filtering UI or transaction table here -->
+    <div class="transfer-card">
+      <h2>Receiver's Details</h2>
+      <form method="post" action="/bank/Transaction">
+        <div class="input-group">
+          <label for="acc-number">Account Number:</label>
+          <input type="text" id="acc-number" name="acc-number "placeholder="xxx" required />
+        </div>
+        <div class="input-group">
+          <label for="acc-holder">Account Holder:</label>
+          <input type="text" id="acc-holder" name="acc-holder" placeholder="yyy" required />
+        </div>
+        <div class="input-group">
+          <label for="amount">Amount to Pay:</label>
+          <input type="number" id="amount" name="amount" placeholder="000" required />
+        </div>
+        <div class="input-group">
+          <label for="password">Your Password:</label>
+          <input type="password" id="password" name="password" placeholder="......" required />
+        </div>
+        <button type="submit" class="pay-button">Pay</button>
+      </form>
+    </div>
+    <h3 style="color: whitesmoke;" class="{{if .Success}}visible{{else}}hidden{{end}}">
+      Transaction Successful 🎉 🎉 
+    </h3>
+    <h3 style="color: whitesmoke;" class="{{if .Invalid}}visible{{else}}hidden{{end}}">
+      Account Number or Account holder name is Invalid ❌ ❌
+    </h3> 
+    <h3 style="color: whitesmoke;" class="{{if .Nobalance}}visible{{else}}hidden{{end}}">
+      Not Enough Balance 💰
+    </h3> 
+    <h3 style="color: whitesmoke;" class="{{if .Password}}visible{{else}}hidden{{end}}">
+      Invalid Password ❌ ❌
+    </h3> 
+  </section>
+  
+</body>
+</html>

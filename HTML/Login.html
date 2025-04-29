@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Login</title>
+    <style>
+        html, body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background: url("/asserts/bank1.jpg") no-repeat center center fixed;
+            background-size: cover;
+            font-family: 'Segoe UI', sans-serif;
+            color: white;
+        }
+        body::before {
+    content: "";
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(0, 0, 0, 0.4); /* Adjust darkness */
+    z-index: -1;
+}
+
+        .login {
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+            align-items: center;
+            background: rgba(0, 0, 0, 0.4);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(12px);
+            box-shadow: 0 8px 30px rgba(255, 102, 0, 0.2);
+            width: 400px;
+            border-radius: 20px;
+            padding: 40px 50px;
+            margin: 150px auto;
+            transition: all 0.3s ease-in-out;
+        }
+
+        .input-box {
+            background: rgba(255, 255, 255, 0.1);
+            width: 100%;
+            padding: 12px 20px;
+            margin: 12px 0;
+            border-radius: 30px;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            color: white;
+            font-size: 15px;
+            outline: none;
+            transition: 0.3s;
+        }
+
+        .input-box:focus {
+            border-color: #ff6600;
+            box-shadow: 0 0 10px rgba(255, 102, 0, 0.4);
+        }
+
+        .input-box::placeholder {
+            color: #ccc;
+        }
+
+        .remember {
+            color: #eee;
+            font-size: 14px;
+        }
+
+        .forget {
+            text-decoration: none;
+            color: #ccc;
+            font-size: 14px;
+            transition: color 0.3s ease;
+        }
+
+        .forget:hover {
+            text-decoration: underline;
+            color: #ff6600;
+        }
+
+        .btn {
+            display: block;
+            width: 60%;
+            padding: 12px;
+            border-radius: 30px;
+            color: white;
+            background-color: #ff6600;
+            cursor: pointer;
+            margin: 20px auto 10px;
+            border: none;
+            font-weight: bold;
+            font-size: 15px;
+            transition: 0.3s ease-in-out;
+            box-shadow: 0 0 15px rgba(255, 102, 0, 0.3);
+        }
+
+        .btn:hover {
+            background-color: #e65c00;
+            box-shadow: 0 0 25px rgba(255, 102, 0, 0.6);
+        }
+
+        .reg {
+            text-decoration: none;
+            color: #ccc;
+            font-weight: bold;
+            transition: color 0.3s ease;
+        }
+
+        .reg:hover {
+            color: #ff6600;
+            text-decoration: underline;
+        }
+
+        .extras {
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 10px;
+        }
+
+        .register-line {
+            color: #bbb;
+            margin-top: 20px;
+            font-size: 14px;
+            text-align: center;
+        }   
+
+        .hidden { visibility: hidden; }
+        .visible {
+            visibility: visible;
+            color: #ff4444;
+            font-weight: bold;
+            margin-top: 10px;
+            text-align: center;
+            background-color: rgba(255, 0, 0, 0.1);
+            padding: 8px;
+            border-radius: 10px;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="login">
+        <form method="post" action="/bank/login">
+            <input class="input-box" type="number" name="userAccNoFromLogin" placeholder="Account Number" required>
+            <input class="input-box" type="text" name="usernameFromLogin" placeholder="Username" required>
+            <input class="input-box" type="password" name="passwordFromLogin" placeholder="Password" required><br>
+
+            <div class="extras">
+                <label><input type="checkbox"> <span class="remember">Remember me</span></label>
+                <a href="#" class="forget">Forget password?</a>
+            </div>
+
+            <button class="btn">Login</button>
+
+            <div class="register-line">
+                Don't have an account? <a class="reg" href="HTML/Registration.html">Register</a>
+            </div>
+
+            <p class="{{if .ShowMessage}}visible{{else}}hidden{{end}}">
+                !!! Invalid Username or Password !!!
+            </p>
+        </form>
+    </div>
+</body>
+</html>
+
+

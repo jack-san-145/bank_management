@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title> My Recent Payments</title>
+</head>
+<style>
+    body {
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background-color: #0f0f0f;
+  color: white;
+}
+
+ 
+/* === Navbar === */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 40px;
+    background-color: #000;
+    border-bottom: 1px solid #222;
+  }
+  
+  .navbar h1 {
+    color: #ff6a00;
+    margin: 0;
+    font-size: 1.8rem;
+  }
+  
+  .nav-links {
+    display: flex;
+    gap: 25px;
+    text-decoration: none;
+  }
+  
+  .nav-links a {
+    color: white;
+    font-weight: 500;
+    transition: color 0.3s ease;
+    text-decoration: none;
+  }
+  
+  .nav-links a:hover {
+    color: #ff6a00;
+  }
+    /* === Responsive Tweak === */
+    @media (max-width: 600px) {
+    .navbar {
+      flex-direction: column;
+      gap: 15px;
+      align-items: flex-start;
+    }
+  
+    .nav-links {
+      flex-wrap: wrap;
+      gap: 15px;
+    }
+  
+    .features-section {
+      padding: 40px 15px;
+    }
+  
+    .cards-container {
+      flex-direction: column;
+      align-items: center;
+    }
+  }
+  
+  
+.page-heading {
+  text-align: center;
+  margin: 2rem 0 1rem;
+  font-size: 2rem;
+  color: #ff6a00;
+}
+
+.transaction-heading {
+  display: grid;
+  grid-template-columns: 1.1fr 1fr 1fr 1fr;
+  background: black;
+  padding: 1rem; /* Increased padding for chunkier feel */
+  font-weight: bold;
+  font-size: 1.5rem; /* Larger font size */
+  color: white;
+  border-bottom: 1px solid #ff6a00;
+  max-width: 100%; /* Make it edge-to-edge */
+  margin: 0 auto;
+  border-radius: 12px 12px 0 0;
+  text-align: center;
+}
+
+
+.transaction-container {
+  max-width: 1000px; /* or 90%, based on your layout */
+  margin: 0 auto;
+  padding: 40px 20px;
+}
+
+
+/* Scrollable container that shows only 5 big cards */
+.transactions-scroll-area {
+  max-height: 700px; /* Adjust height to fit approx 5 rows */
+  overflow-y: auto;
+  padding: 10px 30px;
+  scrollbar-width: thin;
+  scrollbar-color: #ff6a00 #111;
+}
+
+/* Transaction card styling */
+.visible{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #1a1a1a;
+  color: white;
+  padding: 2px 60px; /* 🧡 BIGGER padding */
+  margin-bottom: 20px;
+  border-radius: 16px;
+  box-shadow:  0px 0px 1px #ff6a00aa;;
+  transition: all 0.3s ease;
+  font-size: 1.3rem;
+  min-height: 120px;
+  visibility: visible;
+}
+.hidden{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #1a1a1a;
+  color: white;
+  padding: 2px 60px; /* 🧡 BIGGER padding */
+  margin-bottom: 20px;
+  border-radius: 16px;
+  box-shadow:  0px 0px 1px #ff6a00aa;;
+  transition: all 0.3s ease;
+  font-size: 1.3rem;
+  min-height: 120px;
+  visibility: hidden;
+}
+
+
+#transaction-row:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 0 20px #ff6a00aa;
+}
+
+#transaction-row div {
+  flex: 1;
+  text-align: center;
+  font-weight: 500;
+}
+
+
+
+</style>
+<body>
+  <div class="navbar">
+    <h1>Bankaroo</h1>
+    <div class="nav-links">
+      <a href="/bank/serveIndex">Home</a>
+      <a href="/bank/serveTransaction">Transactions</a>
+      <a href="/bank/AccountHolder">Account</a>
+      <a href="/bank/serveBalancePage">Balance</a>
+      <a href="#">About us</a>
+    </div>
+  </div>
+
+  <main><br>
+    <h1 class="page-heading">📄 My Recent Payments</h1><br><br><br><br>
+
+    <!-- Table Header -->
+    <div class="transaction-heading">
+      <div>Account Number</div>
+      <div>Account Holder</div>
+      <div>Amount</div>
+      <div>Date</div>
+    </div>
+
+    <!-- Transaction Rows -->
+    <div class="transactions-container">
+      <!-- Repeat this div 10 times -->
+<div class="transactions-scroll-area">
+  {{ if .Card1.Present }}
+      <div class="visible" id="transaction-row">
+        <div>{{.Card1.Receiver_id}}</div>
+        <div>{{.Card1.Receiver_name}}</div>
+        <div>{{.Card1.Amount}}</div>
+        <div>{{.Card1.Transaction_date}}</div>
+   {{ end }}
+      </div>
+    {{ if .Card2.Present }}
+      <div class="visible" id="transaction-row">
+        <div>{{.Card2.Receiver_id}}</div>
+        <div>{{.Card2.Receiver_name}}</div>
+        <div>{{.Card2.Amount}}</div>
+        <div>{{.Card2.Transaction_date}}</div>
+      </div>
+      {{ end }}
+    {{ if .Card3.Present }}
+      <div class="visible" id="transaction-row">
+        <div>{{.Card3.Receiver_id}}</div>
+        <div>{{.Card3.Receiver_name}}</div>
+        <div>{{.Card3.Amount}}</div>
+        <div>{{.Card3.Transaction_date}}</div>
+      </div>
+      {{ end }}
+   {{ if .Card4.Present }}
+      <div class="visible" id="transaction-row">
+        <div>{{.Card4.Receiver_id}}</div>
+        <div>{{.Card4.Receiver_name}}</div>
+        <div>{{.Card4.Amount}}</div>
+        <div>{{.Card4.Transaction_date}}</div>
+      </div>
+      {{ end }}
+  {{ if .Card5.Present }}
+      <div class="visible" id="transaction-row">
+        <div>{{.Card5.Receiver_id}}</div>
+        <div>{{.Card5.Receiver_name}}</div>
+        <div>{{.Card5.Amount}}</div>
+        <div>{{.Card5.Transaction_date}}</div>
+      </div>
+      {{ end }}
+   {{ if .Card6.Present }}
+      <div class="visible" id="transaction-row">
+        <div>{{.Card6.Receiver_id}}</div>
+        <div>{{.Card6.Receiver_name}}</div>
+        <div>{{.Card6.Amount}}</div>
+        <div>{{.Card6.Transaction_date}}</div>
+      </div>
+      {{ end }}
+      {{ if .Card7.Present }}
+      <div class="visible" id="transaction-row">
+        <div>{{.Card7.Receiver_id}}</div>
+        <div>{{.Card7.Receiver_name}}</div>
+        <div>{{.Card7.Amount}}</div>
+        <div>{{.Card7.Transaction_date}}</div>
+      </div>
+      {{ end }}
+      {{ if .Card8.Present }}
+      <div class="visible" id="transaction-row">
+        <div>{{.Card8.Receiver_id}}</div>
+        <div>{{.Card8.Receiver_name}}</div>
+        <div>{{.Card8.Amount}}</div>
+        <div>{{.Card8.Transaction_date}}</div>
+      </div>
+      {{ end }}
+      {{ if .Card9.Present }}
+      <div class="visible" id="transaction-row">
+        <div>{{.Card9.Receiver_id}}</div>
+        <div>{{.Card9.Receiver_name}}</div>
+        <div>{{.Card9.Amount}}</div>
+        <div>{{.Card9.Transaction_date}}</div>
+      </div>
+      {{ end }}
+      {{ if .Card10.Present }}
+      <div class="visible" id="transaction-row">
+        <div>{{.Card10.Receiver_id}}</div>
+        <div>{{.Card10.Receiver_name}}</div>
+        <div>{{.Card10.Amount}}</div>
+        <div>{{.Card10.Transaction_date}}</div>
+      </div>
+      {{ end }}
+    </div>
+    </div>
+  </main>
+</body>
+</html>

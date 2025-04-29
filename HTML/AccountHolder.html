@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Account Overview - Bankaroo</title>
+  <!-- <link rel="stylesheet" href="styles.css" /> -->
+</head>
+<style>
+  /* === Global Reset & Base === */
+body {
+    margin: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #0d0d0d;
+    color: white;
+  }
+  
+  a {
+    text-decoration: none;
+    color: inherit;
+  }
+  
+  button {
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.3s ease;
+  }
+  
+  /* === Navbar === */
+  .navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 40px;
+    background-color: #000;
+    border-bottom: 1px solid #222;
+  }
+  
+  .navbar h1 {
+    color: #ff6a00;
+    margin: 0;
+    font-size: 1.8rem;
+  }
+  
+  .nav-links {
+    display: flex;
+    gap: 25px;
+  }
+  
+  .nav-links a {
+    color: white;
+    font-weight: 500;
+    transition: color 0.3s ease;
+  }
+  
+  .nav-links a:hover {
+    color: #ff6a00;
+  }
+  
+  /* === Features Section === */
+  .features-section {
+    text-align: center;
+    padding: 60px 20px;
+    max-width: 1000px;
+    margin: auto;
+  }
+  
+  .features-section h2 {
+    font-size: 2rem;
+    color: #ff6a00;
+    margin-bottom: 20px;
+  }
+  
+  .features-section p {
+    font-size: 1rem;
+    color: #ccc;
+    margin-bottom: 40px;
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+  /* === Card Styling (reuse for home page if needed) === */
+  .cards-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 30px;
+  }
+  
+  .card {
+    background: #1a1a1a;
+    border-radius: 15px;
+    padding: 30px 25px;
+    width: 280px;
+    box-shadow: 0 0 10px #ff6a0030;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  .card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 0 20px #ff6a00aa;
+  }
+  
+  .card h3 {
+    color: #ff6a00;
+    font-size: 1.2rem;
+    margin: 0 0 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+  }
+  
+  .card p {
+    font-size: 0.95rem;
+    color: #ddd;
+    margin-bottom: 20px;
+  }
+  
+  .card button {
+    padding: 10px 22px;
+    background-color: #ff6a00;
+    border: none;
+    border-radius: 20px;
+    color: white;
+    font-weight: bold;
+  }
+  
+  .card button:hover {
+    background-color: #e55a00;
+    transform: scale(1.05);
+  }
+  
+  /* === Responsive Tweak === */
+  @media (max-width: 600px) {
+    .navbar {
+      flex-direction: column;
+      gap: 15px;
+      align-items: flex-start;
+    }
+  
+    .nav-links {
+      flex-wrap: wrap;
+      gap: 15px;
+    }
+  
+    .features-section {
+      padding: 40px 15px;
+    }
+  
+    .cards-container {
+      flex-direction: column;
+      align-items: center;
+    }
+  }
+  
+
+  /* for account holder */
+  .details-card {
+    background-color: #1a1a1a;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 0 10px #ff6a0030;
+    max-width: 500px;
+    margin: 40px auto;
+    transition: all 0.3s ease;
+  }
+  
+  .details-card:hover {
+    box-shadow: 0 0 25px #ff6a00aa;
+    transform: translateY(-5px);
+  }
+  
+  .details-card h2 {
+    color: #ff6a00;
+    text-align: center;
+    margin-bottom: 25px;
+  }
+  
+  .detail {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 15px;
+    border-bottom: 1px solid #333;
+    padding-bottom: 8px;
+  }
+  
+  .label {
+    color: #ccc;
+    font-weight: 500;
+  }
+  
+  .value {
+    color: #eee;
+  }
+  
+  .done-button {
+    display: inline-block;
+    margin-top: 25px;
+    padding: 10px 25px;
+    background-color: #ff6a00;
+    color: white;
+    border: none;
+    border-radius: 20px;
+    font-weight: bold;
+    text-align: center;
+    transition: background 0.3s ease, transform 0.3s ease;
+  }
+  
+  .done-button:hover {
+    background-color: #e55a00;
+    transform: scale(1.05);
+    color: black;
+  }
+  
+</style>
+<body>
+  <div class="navbar">
+    <h1>Bankaroo</h1>
+    <div class="nav-links">
+      <a href="/bank/serveIndex">Home</a>
+      <a href="/bank/serveTransaction">Transactions</a>
+      <a href="/bank/AccountHolder">Account</a>
+      <a href="/bank/serveBalancePage">Balance</a>
+      <a href="#">About us</a>
+    </div>
+  </div>
+
+  <section class="features-section">
+    <h2>💼 Account Holder</h2>
+    <p>Welcome to your Account INfo. Here you can see all information about the yourself</p>
+    <!-- You can add more details or cards here -->
+    <div class="details-card">
+      <h2>Info</h2>
+  
+      <div class="detail">
+          <span class="label">Account Number:</span>
+          <span class="value">{{.AccountNumber}}</span>
+      </div>
+  
+      <div class="detail">
+          <span class="label">Account Holder:</span>
+          <span class="value">{{.Name}}</span>
+      </div>
+  
+      <div class="detail">
+          <span class="label">Password:</span>
+          <span class="value">••••••••</span>
+      </div>
+  
+      <div class="detail">
+          <span class="label">Mobile Number:</span>
+          <span class="value">{{.MobileNumber}}</span>
+      </div>
+  
+      <div class="detail">
+          <span class="label">Address:</span>
+          <span class="value">{{.Address}}</span>
+      </div>
+  
+      <a href="/bank/serveIndex" class="done-button">Done</a>
+  </div>
+  
+  </section>
+</body>
+</html>
