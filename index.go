@@ -51,7 +51,7 @@ func FindUserFromCookie(w http.ResponseWriter, r *http.Request) (int, string, st
 		return 0, "", "", "", "", 0, fmt.Errorf("Error")
 	}
 	if cookie == nil {
-		log.Println("sunni")
+		log.Println("No Cookie found")
 	}
 	UserAc := cookie.Value
 	query_for_details := "select * from CustomersList where acc_no = ?"

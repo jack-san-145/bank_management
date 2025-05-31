@@ -17,11 +17,6 @@ var (
 )
 
 func ServeRegistrationPage(w http.ResponseWriter, r *http.Request) {
-	// temp, err := template.ParseFiles("HTML/Registration.html")
-	// if err != nil {
-	// 	http.Error(w, "unable to load the registration page", http.StatusInternalServerError)
-	// 	return
-	// }
 	temp := LoadhtmlPage(w, "Registration.html")
 	temp.Execute(w, nil)
 
