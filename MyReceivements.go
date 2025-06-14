@@ -7,6 +7,9 @@ import (
 )
 
 func MyreceivementHandler(w http.ResponseWriter, r *http.Request) {
+	if !checkForCookie(w, r) {
+		return
+	}
 	// Parse the HTML template safely
 	templ, err := template.ParseFiles("HTML/MyReceivements.html")
 	if err != nil {
@@ -18,7 +21,7 @@ func MyreceivementHandler(w http.ResponseWriter, r *http.Request) {
 	// Initialize card data
 	data := dataCard{}
 
-	// Get account number from cookie (you may want to validate if it's OK)
+	// Get account number from cookie
 	account_no, _, _, _, _, _, err := FindUserFromCookie(w, r)
 	if err != nil {
 		http.Error(w, "User not authenticated", http.StatusUnauthorized)

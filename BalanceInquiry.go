@@ -14,12 +14,18 @@ type balanceStruct struct {
 }
 
 func ServeBalancePage(w http.ResponseWriter, r *http.Request) {
+	if !checkForCookie(w, r) {
+		return
+	}
 	templ := LoadhtmlPage(w, "BalanceInquiry.html")
 	templ.Execute(w, nil)
 }
 
 func BalanceHandler(w http.ResponseWriter, r *http.Request) {
 
+	if !checkForCookie(w, r) {
+		return
+	}
 	var (
 		account_password string
 		account_balance  int
@@ -29,7 +35,7 @@ func BalanceHandler(w http.ResponseWriter, r *http.Request) {
 	r.ParseForm()
 	pass := r.FormValue("user_password")
 	data := balanceStruct{false, false, 0}
-	_, _, account_password, _, _, account_balance,_ = FindUserFromCookie(w, r)
+	_, _, account_password, _, _, account_balance, _ = FindUserFromCookie(w, r)
 	if pass == account_password {
 		data.Balance = account_balance
 		data.PasswordCorrect = true

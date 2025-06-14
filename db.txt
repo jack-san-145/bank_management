@@ -1,0 +1,34 @@
+
+1. CustomersList :
+
+CREATE TABLE CustomersList (
+    acc_no     INT PRIMARY KEY AUTO_INCREMENT,
+    cus_name   VARCHAR(50) NOT NULL,
+    password   VARCHAR(100) NOT NULL,
+    address    VARCHAR(150),
+    mobile_no  VARCHAR(15)
+) AUTO_INCREMENT = 1000;
+
+
+2. CustomerBalance : 
+
+
+CREATE TABLE CustomerBalance (
+    acc_no  INT PRIMARY KEY,
+    balance INT
+);
+
+
+3. Transaction : 
+
+
+CREATE TABLE Transaction (
+    sender_id        INT NOT NULL,
+    receiver_id      INT NOT NULL,
+    sender_name      VARCHAR(50) NOT NULL,
+    receiver_name    VARCHAR(50) NOT NULL,
+    amount           INT NOT NULL,
+    transaction_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+

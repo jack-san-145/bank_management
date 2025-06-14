@@ -40,3 +40,11 @@ func TransactionRecord(senderId int, receiverId int, senderName string, receiver
 	result, _ := Db.Exec(query, senderId, receiverId, senderName, receiverName, amount)
 	fmt.Println("Transaction record - ", result)
 }
+
+func DeleteSession(session_id string) {
+	query := "delete from Sessions where session_id = ? "
+	_, err := Db.Exec(query, session_id)
+	if err != nil {
+		fmt.Println("error while deleting session ")
+	}
+}

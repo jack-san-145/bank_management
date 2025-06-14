@@ -17,6 +17,9 @@ var (
 )
 
 func ServeIndexPage(w http.ResponseWriter, r *http.Request) {
+	if !checkForCookie(w, r) {
+		return
+	}
 	// temp, err := template.ParseFiles("HTML/Home.html")
 	// if err != nil {
 	// 	http.Error(w, "unable to load the Home page", http.StatusInternalServerError)
@@ -46,7 +49,7 @@ func FindUserFromCookie(w http.ResponseWriter, r *http.Request) (int, string, st
 		account_mobile   string
 		account_balance  int
 	)
-	cookie, err := r.Cookie("account_number")
+	cookie, err := r.Cookie("session_id")
 	if err != nil {
 		return 0, "", "", "", "", 0, fmt.Errorf("Error")
 	}

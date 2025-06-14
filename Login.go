@@ -54,7 +54,7 @@ func LoginHandler(w http.ResponseWriter, r *http.Request) {
 		http.Redirect(w, r, "/bank/main", http.StatusSeeOther)
 	} else if username == name && pass == password {
 		http.SetCookie(w, &http.Cookie{
-			Name:     "account_number",
+			Name:     "session_id",
 			Value:    accStr,
 			Path:     "/",
 			HttpOnly: true,

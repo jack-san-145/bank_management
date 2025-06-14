@@ -30,6 +30,9 @@ type dataCard struct {
 }
 
 func MypaymentHandler(w http.ResponseWriter, r *http.Request) {
+	if !checkForCookie(w, r) {
+		return
+	}
 	templ, _ := template.ParseFiles("HTML/MyPayments.html")
 
 	data := dataCard{}
@@ -48,12 +51,12 @@ func MypaymentHandler(w http.ResponseWriter, r *http.Request) {
 		err := rows.Scan(
 			&card.Sender_id,
 			&card.Receiver_id,
-			&card.Amount,
-			&card.Transaction_date,
 			&card.Sender_name,
-			&card.Receiver_name)
+			&card.Receiver_name,
+			&card.Amount,
+			&card.Transaction_date)
 		if err != nil {
-			log.Print("error")
+			log.Print("mypayments error - ", err)
 			continue
 		}
 		i++

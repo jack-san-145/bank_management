@@ -208,7 +208,7 @@ nav a:active {
         <a href="/bank/AccountHolder">Account</a>
         <a href="/bank/serveBalancePage">Balance</a>
         <a href="#">About us</a>
-        <button onclick="logout()" href="/bank/main" class="logout-btn">Logout</button>
+        <button onclick="logout()" class="logout-btn">Logout</button>
       </nav>
       
   </header>
@@ -258,7 +258,8 @@ nav a:active {
 </body>
 <script>
   function logout() {
-    window.location.href = '/bank/main'; // Replace with your login page path
+    window.location.href = '/bank/logout'; 
+    window.location.reload();
   }
 </script>
 </html>

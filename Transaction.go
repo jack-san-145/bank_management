@@ -19,13 +19,18 @@ type transactionStatus struct {
 }
 
 func ServeTransactionPage(w http.ResponseWriter, r *http.Request) {
-
+	if !checkForCookie(w, r) {
+		return
+	}
 	temp := LoadhtmlPage(w, "Transaction.html")
 	temp.Execute(w, nil)
 
 }
 
 func TransactionHandler(w http.ResponseWriter, r *http.Request) {
+	if !checkForCookie(w, r) {
+		return
+	}
 	var (
 		account_no       int
 		account_name     string

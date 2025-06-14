@@ -17,6 +17,7 @@ var (
 )
 
 func ServeRegistrationPage(w http.ResponseWriter, r *http.Request) {
+
 	temp := LoadhtmlPage(w, "Registration.html")
 	temp.Execute(w, nil)
 
@@ -27,7 +28,7 @@ func inserting(customer_name, customer_password, customer_mobile, customer_addre
 	query := "insert into CustomersList(cus_name,password,address,mobile_no) values(?,?,?,?)"
 	_, err := Db.Exec(query, customer_name, customer_password, customer_address, customer_mobile)
 	if err != nil {
-		fmt.Println("something error while inserting customer details")
+		fmt.Println("something error while inserting customer details - ", err)
 		return
 	}
 
@@ -45,6 +46,7 @@ func inserting(customer_name, customer_password, customer_mobile, customer_addre
 }
 
 func RegistrationHandler(w http.ResponseWriter, r *http.Request) {
+
 	if r.Method != http.MethodPost {
 		http.Redirect(w, r, "bank/register", http.StatusSeeOther)
 		return

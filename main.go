@@ -27,11 +27,12 @@ func main() {
 	http.HandleFunc("/bank/Balance", BalanceHandler)
 	http.HandleFunc("/bank/Mypayment", MypaymentHandler)
 	http.HandleFunc("/bank/Myreceivement", MyreceivementHandler)
+	http.HandleFunc("/bank/logout", LogoutHandler)
 	fmt.Println("Server is running on the Port 8989")
 
 	var err error
 
-	Db, err = sql.Open("mysql", "root@tcp(localhost:3306)/Bank")
+	Db, err = sql.Open("mysql", "root:root@tcp(localhost:3307)/Bank")
 	if err != nil {
 		log.Fatal("Database Connection failed - ", err)
 	} else {
